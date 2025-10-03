@@ -1,6 +1,6 @@
 import cv2
 
-cascade_path = "D:\\TUGAS\\Semester 5\\TEKBER\\tekber\\haarcascade_frontalface_default.xml"
+cascade_path = "haarcascade_frontalface_default.xml"
 clf = cv2.CascadeClassifier(cascade_path)
 
 camera = cv2.VideoCapture(0)
