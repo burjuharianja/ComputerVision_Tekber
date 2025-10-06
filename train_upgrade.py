@@ -12,10 +12,10 @@ if face_detector.empty():
     exit()
 
 def get_images_and_labels(path):
-    # ... (isi fungsi ini tidak berubah, sudah optimal)
+    
     image_paths = [os.path.join(path, f) for f in os.listdir(path)]
     face_samples, ids, skipped_files = [], [], 0
-    print("[INFO] Memindai gambar di dataset...")
+    print("Memindai gambar di dataset...")
     for image_path in image_paths:
         img_gray = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         filename = os.path.basename(image_path)
@@ -39,7 +39,6 @@ def get_images_and_labels(path):
     print(f"[INFO] Data disiapkan. Total file dilewati: {skipped_files}")
     return face_samples, np.array(ids)
 
-# --- Menggunakan Parameter LBPH yang sudah dioptimalkan ---
 recognizer = cv2.face.LBPHFaceRecognizer.create(radius=1, neighbors=8, grid_x=8, grid_y=8)
 
 if not os.path.exists(dataset_path) or len(os.listdir(dataset_path)) == 0:

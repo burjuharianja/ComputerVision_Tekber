@@ -10,12 +10,10 @@ left_eye_clf = cv2.CascadeClassifier(left_eye_cascade_path)
 right_eye_clf = cv2.CascadeClassifier(right_eye_cascade_path)
 smile_clf = cv2.CascadeClassifier(smile_cascade_path)
 
-# Cek apakah semua file classifier berhasil dimuat
 if face_clf.empty() or left_eye_clf.empty() or right_eye_clf.empty() or smile_clf.empty():
     print("Error: Gagal memuat satu atau lebih file cascade XML.")
     exit()
 
-# Inisialisasi kamera
 camera = cv2.VideoCapture(0)
 if not camera.isOpened():
     print("Error: Kamera tidak dapat diakses.")
@@ -27,7 +25,6 @@ while True:
     frame = cv2.flip(frame, 1)
     
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    # Tingkatkan kontras untuk akurasi yang lebih baik
     gray_equalized = cv2.equalizeHist(gray)
 
     faces = face_clf.detectMultiScale(gray_equalized, scaleFactor=1.1, minNeighbors=5, minSize=(60, 60))
